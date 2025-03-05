@@ -13,8 +13,8 @@ def test_multiply():
 def test_divide():
     assert Calculator.divide(6, 3) == 2
 
-def test_new():
-    assert Calculator.new(4,2) == True
+def test_even():
+    assert Calculator.even(4,2) == True
     
 def test_divide_by_zero():
     with pytest.raises(ValueError):
