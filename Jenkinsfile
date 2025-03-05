@@ -6,6 +6,10 @@ pipeline {
         }
     }
 
+    environment {
+        PYTHONPATH = "${WORKSPACE}/calculator"
+    }
+
     stages {
         stage('Checkout') {
             steps {
