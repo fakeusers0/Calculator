@@ -7,7 +7,7 @@ pipeline {
     }
     
     environment {
-        PYTHONPATH = "${WORKSPACE}/calculator"  // Ensure Python finds the calculator module
+        PYTHONPATH = "${WORKSPACE}"  // Ensure Python finds the calculator module
     }
     
     stages {
