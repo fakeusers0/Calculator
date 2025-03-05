@@ -12,16 +12,16 @@ pipeline {
         stage('Check Python and Pip') {
             steps {
                 // Check if Python is installed
-                sh 'python --version || exit 1'
+                sh 'python3 --version || exit 1'
                 // Check if pip is installed
-                sh 'pip --version || exit 1'
+                sh 'pip3 --version || exit 1'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 // Install the project dependencies
-                sh 'pip install -r calculator/requirements.txt'
+                sh 'pip3 install -r calculator/requirements.txt'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Package the application
-                sh 'python setup.py sdist'
+                sh 'python3 setup.py sdist'
             }
         }
 
