@@ -29,7 +29,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Run unit tests using pytest
-                sh 'pytest tests/'  // Adjust based on the actual test directory
+                sh 'pytest test'  // Adjust based on the actual test directory
             }
         }
         
