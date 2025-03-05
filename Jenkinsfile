@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository
-                git 'https://github.com/your-username/your-repo.git'
+                git 'https://github.com/fakeusers0/Calculator'
             }
         }
 
