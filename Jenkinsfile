@@ -30,7 +30,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Run tests; explicitly set PYTHONPATH so tests can import the calculator package.
-                sh 'PYTHONPATH=$WORKSPACE pytest test'
+                sh 'pytest test'
             }
         }
         
