@@ -36,7 +36,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Package the application for distribution
-                sh 'python calculator/setup.py sdist'
+                sh 'python setup.py sdist'
             }
         }
         
