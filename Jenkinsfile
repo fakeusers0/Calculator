@@ -5,21 +5,21 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository
-                git 'https://github.com/fakeusers0/Calculator.git'
+                git branch: 'main', url: 'https://github.com/fakeusers0/Calculator.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 // Install the project dependencies
-                sh 'pip install -r requirements.txt'
+                sh 'pip install -r calculator/requirements.txt'
             }
         }
 
         stage('Test') {
             steps {
                 // Run the tests
-                sh 'pytest tests'
+                sh 'pytest test'
             }
         }
 
