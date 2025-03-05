@@ -21,7 +21,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install the project dependencies
-                sh 'pip install --upgrade pip'
                 sh 'pip install --upgrade pip setuptools'
                 sh 'pip install -r calculator/requirements.txt'
             }
