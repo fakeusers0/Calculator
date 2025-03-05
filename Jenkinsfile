@@ -6,22 +6,21 @@ pipeline {
         }
     }
     
-    // Set PYTHONPATH to the WORKSPACE so Python can locate the "calculator" package.
     environment {
-        PYTHONPATH = "${WORKSPACE}"
+        PYTHONPATH = "${WORKSPACE}/calculator"  // Ensure Python finds the calculator module
     }
     
     stages {
         stage('Checkout') {
             steps {
-                // Check out code from your Git repo.
+                // Clone the GitHub repository
                 git branch: 'main', url: 'https://github.com/fakeusers0/Calculator.git'
             }
         }
         
         stage('Install Dependencies') {
             steps {
-                // Upgrade pip and install setuptools (required for setup.py) and other dependencies.
+                // Upgrade pip and install required dependencies from calculator/requirements.txt
                 sh 'pip install --upgrade pip setuptools'
                 sh 'pip install -r calculator/requirements.txt'
             }
@@ -29,21 +28,21 @@ pipeline {
         
         stage('Test') {
             steps {
-                // Run tests; explicitly set PYTHONPATH so tests can import the calculator package.
-                sh 'pytest test/' 
+                // Run unit tests using pytest
+                sh 'pytest tests/'  // Adjust based on the actual test directory
             }
         }
         
         stage('Build') {
             steps {
-                // Build the source distribution of your package.
-                sh 'python setup.py sdist'
+                // Package the application for distribution
+                sh 'python calculator/setup.py sdist'
             }
         }
         
         stage('Deploy') {
             steps {
-                // Placeholder for deployment steps.
+                // Placeholder for deployment steps
                 echo 'Deploying the application...'
             }
         }
