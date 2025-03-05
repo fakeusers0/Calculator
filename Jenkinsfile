@@ -23,14 +23,14 @@ pipeline {
             steps {
                 // Upgrade pip and install setuptools (required for setup.py) and other dependencies.
                 sh 'pip install --upgrade pip setuptools'
-                sh 'pip install -r requirements.txt'
+                sh 'pip install -r calculator/requirements.txt'
             }
         }
         
         stage('Test') {
             steps {
                 // Run tests; explicitly set PYTHONPATH so tests can import the calculator package.
-                sh 'PYTHONPATH=$WORKSPACE pytest tests/' 
+                sh 'pytest test/' 
             }
         }
         
