@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.12'
+            args '-u root' // Run as root to install dependencies
+        }
+    }
 
     stages {
         stage('Checkout') {
@@ -9,19 +14,11 @@ pipeline {
             }
         }
 
-        stage('Check Python and Pip') {
-            steps {
-                // Check if Python is installed
-                sh 'python3 --version || exit 1'
-                // Check if pip is installed
-                sh 'pip3 --version || exit 1'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 // Install the project dependencies
-                sh 'pip3 install -r calculator/requirements.txt'
+                sh 'pip install --upgrade pip'
+                sh 'pip install -r calculator/requirements.txt'
             }
         }
 
@@ -35,7 +32,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Package the application
-                sh 'python3 setup.py sdist'
+                sh 'python setup.py sdist'
             }
         }
 
