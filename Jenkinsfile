@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        PYTHONPATH = "${WORKSPACE}/calculator"
+        PYTHONPATH = "${WORKSPACE}"
     }
 
     stages {
@@ -29,7 +29,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Run the tests
-                sh 'pytest test'
+                sh 'pytest calculator/test/'
             }
         }
 
