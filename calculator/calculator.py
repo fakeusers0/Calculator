@@ -12,7 +12,7 @@ class Calculator:
         return a * b
     
     @staticmethod
-    def new(a, b):
+    def even(a, b):
         return a%b==0
 
     @staticmethod
