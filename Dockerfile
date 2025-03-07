@@ -8,8 +8,10 @@ WORKDIR /app
 COPY calculator/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
-COPY calculator/ .
+# Copy all the code needed for testing and building
+COPY calculator/ ./calculator/
+COPY test/ ./test/
+COPY setup.py .
 
 # Use a smaller runtime image
 FROM python:3.9-slim
@@ -21,9 +23,10 @@ WORKDIR /app
 COPY --from=builder /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Copy the application code
-COPY calculator/ .
+# Copy all application code and test files
+COPY --from=builder /app /app
 
-# Set the entrypoint
-ENTRYPOINT ["python"]
-CMD ["-m", "calculator"]
+# Remove ENTRYPOINT to allow Jenkins to execute commands
+# and keep the container running with a non-terminating command
+ENTRYPOINT []
+CMD ["tail", "-f", "/dev/null"]
