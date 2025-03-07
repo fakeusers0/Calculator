@@ -2,12 +2,12 @@ pipeline {
     agent {
         dockerfile {
             filename 'Dockerfile'
-            dir '.'  // Changed from 'workspaces/Calculator' to '.'
+            dir '.'  
         }
     }
     
     environment {
-        PYTHONPATH = "${WORKSPACE}"  // Ensure Python finds the calculator module
+        PYTHONPATH = "${WORKSPACE}"  
     }
     
     stages {
