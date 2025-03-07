@@ -2,7 +2,7 @@ pipeline {
     agent {
         dockerfile {
             filename 'Dockerfile'
-            dir '.'
+            dir '.'  // Changed from 'workspaces/Calculator' to '.'
         }
     }
     
