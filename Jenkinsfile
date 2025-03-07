@@ -1,8 +1,9 @@
 pipeline {
     agent {
-        docker {
-            image 'python:3.12'
-            args '-u root' // Run as root to install dependencies
+        dockerfile {
+            filename 'Dockerfile'
+            dir 'workspaces/Calculator'
+            additionalBuildArgs '--target builder'
         }
     }
     
@@ -20,9 +21,8 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                // Upgrade pip and install required dependencies from calculator/requirements.txt
-                sh 'pip install --upgrade pip setuptools'
-                sh 'pip install -r calculator/requirements.txt'
+                // Dependencies are already installed in the Docker image
+                echo 'Dependencies installed in Docker image'
             }
         }
         
