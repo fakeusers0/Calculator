@@ -3,6 +3,7 @@ pipeline {
         dockerfile {
             filename 'Dockerfile'
             dir '.'  
+            args '--rm'
         }
     }
     
